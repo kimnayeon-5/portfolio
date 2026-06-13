@@ -1,0 +1,466 @@
+/* ==========================================================================
+   0. GOOGLE FONTS IMPORT
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap');
+
+:root {
+  /* ==========================================================================
+     1. COLOR PALETTE (색상)
+     ========================================================================== */
+  /* Brand Colors */
+  --color-bg: #FAFAFA;          /* 퓨어 미니멀 화이트 (배경) */
+  --color-primary: #1E2229;     /* 다크 슬레이트 그레이 (주색상 / 메인 오브젝트) */
+  --color-accent: #4AD3B1;      /* 네오 세이지 민트 (보조색상 / 포인트) */
+  
+  /* Text Colors */
+  --color-text-main: #1E2229;   /* 본문 텍스트 (주색상과 통일하여 모던한 느낌 강조) */
+  --color-text-dark: #6ae7c8;   /* 완전한 블랙 (강조 텍스트 / 헤드라인) */
+  --color-text-muted: #6C757D;  /* 뮤트 그레이 (부제목 / 설명글 / 날짜 등) */
+  --color-text-white: #FFFFFF;  /* 화이트 텍스트 (포인트 컬러나 어두운 배경 위) */
+
+  /* ==========================================================================
+     2. TYPOGRAPHY (폰트)
+     ========================================================================== */
+  /* Font Family */
+    --font-title:       'Syne', sans-serif;
+    --font-body:        'Inter', sans-serif;
+
+  /* Font Weight */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semi-bold: 600;
+  --weight-bold: 700;
+  --weight-extra-bold: 800; /* Syne 폰트의 매력을 살릴 때 추천 */
+
+  /* ==========================================================================
+     3. SPACING (간격 - 모던 클린을 위한 8px 그리드 시스템)
+     ========================================================================== */
+  --space-xs: 0.25rem;  /* 4px */
+  --space-sm: 0.5rem;   /* 8px */
+  --space-md: 1rem;     /* 16px - 일반적인 요소 사이 간격 */
+  --space-lg: 2rem;   /* 24px - 컴포넌트 패딩 */
+  --space-xl: 4rem;     /* 32px - 섹션 내 큰 간격 */
+  --space-xxl: 4rem;    /* 64px - 섹션과 섹션 사이 여백 */
+
+  /* ==========================================================================
+     4. BORDER RADIUS (모서리 곡률 - 모던 클린 무드)
+     ========================================================================== */
+  --radius-sm: 4px;     /* 배지, 태그 등 작은 요소 */
+  --radius-md: 8px;     /* 일반적인 버튼, 카드 컴포넌트 */
+  --radius-lg: 16px;    /* 팝업 모달, 메인 비주얼 박스 등 큰 영역 */
+  --radius-full: 9999px;/* 완전한 타원 (필터 버튼, 칩 스타일) */
+
+  /* ==========================================================================
+     5. TRANSITION (애니메이션 효과)
+     ========================================================================== */
+  --transition-fast: all 0.2s ease; /* 호버 효과용 */
+}
+h1 {
+  font-family: var(--font-title);
+  font-weight: var(--weight-extra-bold);
+  color: var(--color-text-dark);
+  letter-spacing: -0.03em; /* 자간을 살짝 조여주면 훨씬 더 모던해집니다. */
+}
+
+/* ==========================================================================
+   1. DESIGN SYSTEM & VARIABLES
+   ========================================================================== */
+:root {
+  /* Colors */
+  --color-primary:    #1E2229;   /* 주 색상 */
+  --color-accent:     #4AD3B1;   /* 포인트 색상 (민트) */
+  --color-bg:         #FAFAFA;   /* 전체 배경 */
+  --color-text:       #1E2229;   /* 기본 텍스트 */
+  --color-text-light: #FFFFFF;   /* 부드러운/밝은 텍스트 */
+  --color-text-muted: #6C757D;   /* 부제목 / 설명글 */
+
+  /* Fonts */
+  --font-title:       'Syne', sans-serif;
+  --font-body:        'Inter', sans-serif;
+
+  /* Spacing & Sizing */
+  --spacing-sm:       0.5rem;   /* 8px */
+  --spacing-md:       1rem;     /* 16px */
+  --spacing-lg:       2rem;     /* 32px */
+  --spacing-xl:       4rem;     /* 64px */
+  --max-width:        1200px;   /* 콘텐츠 최대 너비 제한 */
+  
+  /* Border Radius */
+  --radius:           8px;
+  --radius-lg:        16px;
+  
+  /* Transition */
+  --transition:       all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+/* 공통 섹션 스타일 (모던한 여백 확보) */
+section {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   3. LAYOUT & SECTIONS
+   ========================================================================== */
+
+/* HEADER (Navigation) - Flexbox */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* 윈도우 전체 너비로 확장 */
+  background-color: rgba(250, 250, 250, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(30, 34, 41, 0.05);
+}
+
+nav {
+  /* max-width를 없애거나 100%로 설정하여 윈도우 전체를 쓰도록 합니다 */
+  width: 100%; 
+  max-width: 100%; 
+  
+  /* 양쪽 끝에 여백을 주어 너무 벽에 붙지 않게 조절 */
+  padding: var(--spacing-md) var(--spacing-xl); 
+  
+  /* 가로 정렬을 위한 Flexbox */
+  display: flex;
+  justify-content: space-between; /* 로고는 왼쪽, 메뉴는 오른쪽에 배치 */
+  align-items: center;            /* 세로축 기준 중앙 정렬 */
+}
+
+.nav-list {
+  display: flex;                  /* 메뉴 글자들을 가로로 나열 */
+  gap: var(--spacing-xl);        /* 메뉴와 메뉴 사이의 가로 간격 (더 넓게 조정) */
+  
+}
+
+.nav-list a {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;         /* 모던한 느낌을 위해 글자 자간을 살짝 넓힘 */
+  text-transform: uppercase;      /* 영문 메뉴일 경우 대문자로 변환해 시크한 무드 연산 */
+}
+
+.nav-list a:hover {
+  color: var(--color-accent);
+}
+
+/* HERO SECTION - Flexbox */
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 80px; /* 헤더 높이만큼 마진 */
+}
+
+#hero h1 {
+  font-family: var(--font-title);
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.03em;
+}
+
+#hero p {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-btn {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border-radius: var(--radius);
+  font-weight: 500;
+}
+
+.hero-btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* ABOUT SECTION - Grid (2열 구조) */
+#about {
+  width: var(--max-width);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+.about-flex-box {
+    display: flex;
+    align-items: flex-start; /* 글과 사진의 시작 윗줄을 맞춤 */
+    justify-content: space-between; /* 왼쪽 끝에 글, 오른쪽 끝에 사진 */
+    gap: 40px;               /* 글과 사진 사이의 간격 */
+    width: 100%;             /* 가로 공간을 꽉 채움 */
+}
+
+.about-img {  
+  margin: 0;
+  height: auto;            /* 비율 유지 */
+  border-radius: 10px;
+  
+  /* 처음에 흑백으로 처리하고 대비를 살짝 높임 */
+  filter: grayscale(100%) contrast(110%);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* 마우스를 올렸을 때 */
+.about-img:hover {
+  filter: grayscale(0%) contrast(100%); /* 원래 색감으로 부드럽게 변경 */
+  transform: translateY(-5px);         /* 위로 5px 살짝 올라감 */
+}
+
+.about-text p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-container {
+    flex: 1;            
+    text-align: left;        
+}
+
+/* WORKS SECTION (팝업/축제 기획 포트폴리오의 핵심) - Grid */
+#works .works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 모던하게 큼직한 2열 구조 */
+  gap: var(--spacing-lg);
+}
+
+.work-card {
+  background-color: var(--color-text-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(30, 34, 41, 0.05);
+  transition: var(--transition);
+}
+
+.work-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(30, 34, 41, 0.05);
+}
+
+.work-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background-color: #E5E7EB;
+}
+
+.work-info {
+  padding: var(--spacing-lg);
+}
+
+.work-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.work-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* SKILLS SECTION - Grid */
+#skills .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 반응형 자동 배치 */
+  gap: var(--spacing-md);
+}
+
+.skill-item {
+  background: var(--color-text-light);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--color-primary); /* 깔끔한 포인트 라인 */
+}
+
+.skill-item:hover {
+  border-left-color: var(--color-accent);
+}
+
+/* CONTACT SECTION - Flexbox */
+#contact {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.contact-email {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: var(--spacing-md) 0;
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+/* FOOTER - Flexbox */
+footer {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: var(--spacing-lg);
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   4. RESPONSIVE DESIGN (반응형 레이아웃)
+   ========================================================================== */
+
+/* 태블릿 환경 (768px 이하) */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 3.25rem;
+  }
+  
+  #about {
+    grid-template-columns: 1fr; /* 2열에서 1열로 세로 배치 */
+    gap: var(--spacing-lg);
+  }
+  
+  #works .works-grid {
+    grid-template-columns: 1fr; /* 기획서 카드를 1열로 큼직하게 배치 */
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* 모바일 환경 (480px 이하) */
+@media (max-width: 480px) {
+  section {
+    padding: var(--spacing-lg) var(--spacing-md); /* 여백 축소 */
+  }
+
+  #hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .nav-links {
+    gap: var(--spacing-md); /* 네비게이션 간격 좁힘 */
+  }
+  
+  .contact-email {
+    font-size: 1.25rem; /* 이메일 텍스트 크기 모바일 최적화 */
+  }
+}
+/* 1. KEYFRAMES 정의: 텍스트를 아래(10px)에서 원래 위치로 올리며 Fade-in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* 10px 아래에서 시작 */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);   /* 원래 위치로 이동 */
+  }
+}
+
+/* 2. 애니메이션 클래스 정의: 공통 속성 설정 */
+.animate-fadeInUp {
+  animation-name: fadeInUp;
+  animation-duration: 0.6s;            /* 애니메이션 시간: 0.6초 */
+  animation-fill-mode: both;          /* 시작 전 opacity: 0 유지 */
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 부드러운 아웃 효과 */
+}
+
+/* 3. 순차 등장 (0.2초 간격) 설정 */
+.hero-title {
+  animation-delay: 0.2s;               /* 타이틀은 0.2초 후 시작 */
+}
+
+.hero-subtitle {
+  animation-delay: 0.4s;               /* 부제는 0.2초 더 늦게 시작 (총 0.4초) */
+}
+
+.hero-btn {
+  animation-delay: 0.6s;               /* 버튼은 또 0.2초 더 늦게 시작 (총 0.6초) */
+}
+/* 1. 공통 애니메이션 클래스 설정 */
+.fade-up-text {
+  opacity: 0; /* 처음에는 보이지 않게 설정 */
+  transform: translateY(30px); /* 아래로 30px 내려놓은 상태 */
+  animation: fadeUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  /* cubic-bezier를 사용하면 부드럽고 감각적으로 스르륵 멈추는 효과를 줍니다 */
+}
+
+/* 2. 각 요소별 순차적 지연 시간(Delay) 설정 */
+.fade-up-text.title {
+  animation-delay: 0s; /* 타이틀은 즉시 시작 */
+}
+
+.fade-up-text.subtitle {
+  animation-delay: 0.2s; /* 부제목은 0.2초 뒤 시작 */
+}
+
+.fade-up-text.cta-button {
+  animation-delay: 0.4s; /* 버튼은 0.4초 뒤 시작 */
+}
+
+/* 3. 애니메이션 효과 정의 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 복귀 */
+  }
+}
